@@ -1094,7 +1094,6 @@ var listaProdutos = [
 ]
 
 // Resoluções dos exercícios
-
 // Exercício 1
 function exercicio1(){
     var totalEmEstoque = 0;
@@ -1183,7 +1182,6 @@ function exercicio7(){
     console.log(produtoMaisBarato)
 }
 
-
 // Exercício 8
 function exercicio8(){
     let estoqueMaisValioso = listaProdutos[0];
@@ -1214,36 +1212,225 @@ function exercicio9(){
 
 // Exercício 10
 function exercicio10(){
-    
+    var inventarioEmpresa = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos[i];
+        if (produto.qtdEstoque > 0){
+            inventarioEmpresa += produto.preco * produto.qtdEstoque
+        }
+    }
+    console.log("Valor do ticket médio dos produtos da empresa é R$ " + (inventarioEmpresa/listaProdutos.length))
 }
-// todos os produtos do estoque x preco / todas as quantidades
-
 
 // Exercício 11
 function exercicio11(){
+    var listaDeptos = [];
 
+    // Para saber quais departamentos tem:    
+    let codDepto = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        if (produto.departamento.idDepto != codDepto){
+            // console.log(produto.departamento.nomeDepto);
+            codDepto = produto.departamento.idDepto;
+
+            // Encontrei os departamentos, agora definirei uma pequena estrutura para armazenar na lista, contendo o nome do dpto e inicialmente a qtd zerada
+            let itemLista = {
+                nomeDepto: produto.departamento.nomeDepto,
+                idDepto: produto.departamento.idDepto,
+                somatoriaItens: 0
+            };
+            listaDeptos.push(itemLista);
+        }
+    }
+    // Agora percorro novamente a lista e, para cada produto, percorro os departamentos e somo o estoque
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+
+        // Para cada produto na lista, eu preciso encontrar seu respectivo departamento na outra lista e somar ao seu estoque
+
+        // Tenho que percorrer a lista de departamentos
+        for(j = 0; j < listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){ // o dpto do produto corresponde ao dpto da lista?
+                listaDeptos[j].somatoriaItens += produto.qtdEstoque;
+                break;
+            }
+        }
+    }
+    // Para exibir a lista
+    console.log(listaDeptos)
 }
 
+// listaProdutos.map (produto => console.log(produto.departamento.nomeDepto))
 
 // Exercício 12
 function exercicio12(){
+    var listaDeptos = [];
+    
+    // Para saber quais departamentos tem:    
+    let codDepto = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        if (produto.departamento.idDepto != codDepto){
+            // console.log(produto.departamento.nomeDepto);
+            codDepto = produto.departamento.idDepto;
 
+            // Encontrei os departamentos, agora definirei uma pequena estrutura para armazenar na lista, contendo o nome do dpto e inicialmente a qtd zerada
+            let itemLista = {
+                nomeDepto: produto.departamento.nomeDepto,
+                idDepto: produto.departamento.idDepto,
+                inventarioDepto: 0
+            };
+            listaDeptos.push(itemLista);
+        }
+    }
+    // Agora percorro novamente a lista e, para cada produto, percorro os departamentos e somo o estoque
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        let inventarioProduto = produto.preco * produto.qtdEstoque
+        
+        // Para cada produto na lista, eu preciso encontrar seu respectivo departamento na outra lista e somar ao seu estoque
+        // Tenho que percorrer a lista de departamentos     
+        for (j = 0; j < listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){ // o dpto do produto corresponde ao dpto da lista?
+                listaDeptos[j].inventarioDepto += inventarioProduto;
+                break;
+            }            
+        }
+    }    
+    // Para exibir a lista
+    console.log(listaDeptos)
 }
-
 
 // Exercício 13
 function exercicio13(){
+    // Ticket = valor total dos produtos / qtd itens
 
+    var listaDeptos = [];
+
+    let codDepto = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        if (produto.departamento.idDepto != codDepto){
+
+            codDepto = produto.departamento.idDepto;
+
+            let itemLista = {
+                nomeDepto: produto.departamento.nomeDepto,
+                idDepto: produto.departamento.idDepto,
+                ticketMedio: 0,
+                somatoriaItens: 0,
+                inventarioProduto: 0,                
+            };
+            listaDeptos.push(itemLista);
+        }
+    }
+
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        
+        for(j = 0; j < listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
+                listaDeptos[j].somatoriaItens += produto.qtdEstoque;
+                listaDeptos[j].inventarioProduto += produto.preco * produto.qtdEstoque;                
+                break;
+            }
+        }
+    }
+
+    for(j = 0; j < listaDeptos.length; j++){
+        listaDeptos[j].ticketMedio = listaDeptos[j].inventarioProduto / listaDeptos[j].somatoriaItens;
+    }
+
+    // Para exibir a lista
+    console.log(listaDeptos)
 }
-
 
 // Exercício 14
 function exercicio14(){
 
-}
+    // preciso do inventario por departamento e depois ver o mais valioso
 
+    var listaDeptos = [];
+
+    let codDepto = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        if (produto.departamento.idDepto != codDepto){
+
+            codDepto = produto.departamento.idDepto;
+
+            let itemLista = {
+                nomeDepto: produto.departamento.nomeDepto,
+                idDepto: produto.departamento.idDepto,
+                inventarioProduto: 0,
+            };
+            listaDeptos.push(itemLista);
+        }
+    }
+
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        
+        for(j = 0; j < listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){                
+                listaDeptos[j].inventarioProduto += produto.preco * produto.qtdEstoque;                
+                break;
+            }
+        }
+    }
+
+    let deptoMaisValioso = listaDeptos[0];
+    // console.log(listaDeptos)
+    // console.log(listaDeptos[7].inventarioProduto)
+    for(j = 1; j < listaDeptos.length; j++){
+        if (listaDeptos[j].inventarioProduto > deptoMaisValioso.inventarioProduto) {
+            deptoMaisValioso = listaDeptos[j]
+        }
+    }
+    console.log(`O departamento mais valioso é o ${deptoMaisValioso.nomeDepto}`)
+}
 
 // Exercício 15
 function exercicio15(){
 
+    var listaDeptos = [];
+
+    let codDepto = 0;
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        if (produto.departamento.idDepto != codDepto){
+
+            codDepto = produto.departamento.idDepto;
+
+            let itemLista = {
+                nomeDepto: produto.departamento.nomeDepto,
+                idDepto: produto.departamento.idDepto,
+                inventarioProduto: 0,
+            };
+            listaDeptos.push(itemLista);
+        }
+    }
+
+    for (let i = 0; i < listaProdutos.length; i++) {
+        let produto = listaProdutos [i];
+        
+        for(j = 0; j < listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){                
+                listaDeptos[j].inventarioProduto += produto.preco * produto.qtdEstoque;                
+                break;
+            }
+        }
+    }
+
+    // console.log(listaDeptos)
+
+    let deptoMenosValioso = listaDeptos [0];
+    for(j = 1; j < listaDeptos.length; j++){
+        let depto = listaDeptos[j];
+        if (depto.inventarioProduto < deptoMenosValioso.inventarioProduto) {
+            deptoMenosValioso = depto
+        }
+    }
+    console.log(`O departamento menos valioso é o ${deptoMenosValioso.nomeDepto}`)
 }
