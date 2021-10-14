@@ -1260,6 +1260,8 @@ function exercicio11(){
     // Para exibir a lista
     console.log(listaDeptos)
 }
+console.log(`A resposta do exercício 11 é "somatoriaItens":`)
+console.log(exercicio11())
 
 // listaProdutos.map (produto => console.log(produto.departamento.nomeDepto))
 
@@ -1301,6 +1303,8 @@ function exercicio12(){
     // Para exibir a lista
     console.log(listaDeptos)
 }
+console.log(`A resposta do exercício 12 é "inventarioDepto":`)
+console.log(exercicio12())
 
 // Exercício 13
 function exercicio13(){
@@ -1345,6 +1349,8 @@ function exercicio13(){
     // Para exibir a lista
     console.log(listaDeptos)
 }
+console.log(`A resposta do exercício 13 é "ticketMedio":`)
+console.log(exercicio13())
 
 // Exercício 14
 function exercicio14(){
@@ -1388,8 +1394,9 @@ function exercicio14(){
             deptoMaisValioso = listaDeptos[j]
         }
     }
-    console.log(`O departamento mais valioso é o ${deptoMaisValioso.nomeDepto}`)
+    console.log(`Resposta exercício 14: o departamento mais valioso é o "${deptoMaisValioso.nomeDepto}"`)
 }
+console.log(exercicio14())
 
 // Exercício 15
 function exercicio15(){
@@ -1432,5 +1439,6 @@ function exercicio15(){
             deptoMenosValioso = depto
         }
     }
-    console.log(`O departamento menos valioso é o ${deptoMenosValioso.nomeDepto}`)
+    console.log(`Resposta exercício 15: o departamento menos valioso é o "${deptoMenosValioso.nomeDepto}"`)
 }
+console.log(exercicio15())
