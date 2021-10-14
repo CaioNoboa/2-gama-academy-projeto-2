@@ -1257,10 +1257,13 @@ function exercicio11(){
             }
         }
     }
+    for(j = 0; j < listaDeptos.length; j++){
+        console.log(`O total de itens do departamento "${listaDeptos[j].nomeDepto}" é ${listaDeptos[j].somatoriaItens}`)
+    }
     // Para exibir a lista
-    console.log(listaDeptos)
+    // console.log(listaDeptos)
 }
-console.log(`A resposta do exercício 11 é "somatoriaItens":`)
+console.log("A resposta do exercício 11 é:")
 console.log(exercicio11())
 
 // listaProdutos.map (produto => console.log(produto.departamento.nomeDepto))
@@ -1297,13 +1300,18 @@ function exercicio12(){
             if (produto.departamento.idDepto == listaDeptos[j].idDepto){ // o dpto do produto corresponde ao dpto da lista?
                 listaDeptos[j].inventarioDepto += inventarioProduto;
                 break;
-            }            
-        }
-    }    
+            }         
+        }        
+    }
+
+    for (j = 0; j < listaDeptos.length; j++){
+        console.log(`O inventário do departamento "${listaDeptos[j].nomeDepto}" é R$${listaDeptos[j].inventarioDepto}`)
+    }
+
     // Para exibir a lista
-    console.log(listaDeptos)
+    // console.log(listaDeptos)
 }
-console.log(`A resposta do exercício 12 é "inventarioDepto":`)
+console.log(`A resposta do exercício 12 é:`)
 console.log(exercicio12())
 
 // Exercício 13
@@ -1344,12 +1352,13 @@ function exercicio13(){
 
     for(j = 0; j < listaDeptos.length; j++){
         listaDeptos[j].ticketMedio = listaDeptos[j].inventarioProduto / listaDeptos[j].somatoriaItens;
+        console.log(`O ticket médio do departamento "${listaDeptos[j].nomeDepto}" é R$${listaDeptos[j].ticketMedio}`)
     }
 
     // Para exibir a lista
-    console.log(listaDeptos)
+    // console.log(listaDeptos)
 }
-console.log(`A resposta do exercício 13 é "ticketMedio":`)
+console.log(`A resposta do exercício 13 é:`)
 console.log(exercicio13())
 
 // Exercício 14
