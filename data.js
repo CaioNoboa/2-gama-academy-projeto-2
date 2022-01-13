@@ -1,4 +1,4 @@
-var lista = [
+var listaProdutos = [
     {
         "codProduto": 25754,
         "descricao": "ADAPTADOR BLUETOOH USB RECEPTOR DE AUDIO P2",
@@ -1093,4 +1093,5 @@ var lista = [
     }
 ]
 
-module.exports = lista;
+module.exports = listaProdutos;
+// export default listaProdutos

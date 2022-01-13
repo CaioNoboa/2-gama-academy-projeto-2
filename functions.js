@@ -1,4 +1,4 @@
-const listaProdutos = require('./data')
+let listaProdutos = require('./data')
 
 // Resoluções dos exercícios
 // Exercício 1
@@ -8,8 +8,9 @@ function exercicio1(){
         let produto = listaProdutos[i];        
         totalEmEstoque += produto.qtdEstoque;
     }
-    console.log("O total de itens em estoque é " + totalEmEstoque)
+    console.log(`A resposta do exercício 1 é: o total de itens em estoque é ${totalEmEstoque}`)
 }
+console.log(exercicio1())
 
 // Exercício 2
 function exercicio2(){
@@ -20,8 +21,9 @@ function exercicio2(){
             totalDestaque += produto.qtdEstoque;
         }        
     }
-    console.log("O total de itens em destaque é " + totalDestaque)
+    console.log(`A resposta do exercício 2 é: o total de itens em destaque é ${totalDestaque}`)
 }
+console.log(exercicio2())
 
 // Exercício 3
 function exercicio3(){
@@ -32,8 +34,9 @@ function exercicio3(){
             totalDisponivel += produto.qtdEstoque;            
         }
     }
-    console.log("O total de itens disponíveis é " + totalDisponivel)
+    console.log(`A resposta do exercício 3 é: o total de itens disponíveis é ${totalDisponivel}`)
 }
+console.log(exercicio3())
 
 // Exercício 4
 function exercicio4(){
@@ -45,8 +48,9 @@ function exercicio4(){
             // produtosDisponiveisDestaque ++ //seria para ver a quantidade de produtos (nao itens)
         }       
     }
-    console.log("O total de itens disponíveis e em destaque é " + produtosDisponiveisDestaque)
+    console.log(`A resposta do exercício 4 é: o total de itens disponíveis e em destaque é ${produtosDisponiveisDestaque}`)
 }
+console.log(exercicio4())
 
 // Exercício 5
 function exercicio5(){
@@ -57,8 +61,9 @@ function exercicio5(){
             inventarioEmpresa += produto.preco * produto.qtdEstoque
         }
     }
-    console.log("O inventário total da empresa é R$" + inventarioEmpresa)
+    console.log(`A resposta do exercício 5 é: o inventário total da empresa é R$${inventarioEmpresa}`)
 }
+console.log(exercicio5())
 
 // Exercício 6
 function exercicio6(){
@@ -70,9 +75,9 @@ function exercicio6(){
             produtoMaisCaro = produto
         }
     }
-    console.log("O produto mais caro da empresa é:")
-    console.log(produtoMaisCaro)
+    console.log(`A resposta do exercício 6 é: o produto mais caro da empresa é: ${produtoMaisCaro}`)
 }
+console.log(exercicio6())
 
 // Exercício 7
 function exercicio7(){
@@ -83,9 +88,9 @@ function exercicio7(){
             produtoMaisBarato = produto
         }
     }
-    console.log("O produto mais barato da empresa é:")
-    console.log(produtoMaisBarato)
+    console.log(`A resposta do exercício 7 é: o produto mais barato da empresa é: ${produtoMaisBarato}`)    
 }
+console.log(exercicio7())
 
 // Exercício 8
 function exercicio8(){
@@ -98,8 +103,9 @@ function exercicio8(){
             }
         }
     }
-    console.log("O estoque mais valioso da empresa é do produto " + estoqueMaisValioso.descricao + "cujo valor de estoque é R$" + estoqueMaisValioso.preco*estoqueMaisValioso.qtdEstoque)
+    console.log(`A resposta do exercício 8 é: o estoque mais valioso da empresa é do produto ${estoqueMaisValioso.descricao}, cujo valor de estoque é R$${estoqueMaisValioso.preco * estoqueMaisValioso.qtdEstoque}`)
 }
+console.log(exercicio8())
 
 // Exercício 9
 function exercicio9(){
@@ -112,8 +118,9 @@ function exercicio9(){
             }
         }
     }
-    console.log("O estoque mais barato da empresa é do produto " + estoqueMaisBarato.descricao + "cujo valor de estoque é R$" + estoqueMaisBarato.preco*estoqueMaisBarato.qtdEstoque)
+    console.log(`A resposta do exercício 9 é: o estoque mais barato da empresa é do produto ${estoqueMaisBarato.descricao}, cujo valor de estoque é R$${estoqueMaisBarato.preco * estoqueMaisBarato.qtdEstoque}`)
 }
+console.log(exercicio9())
 
 // Exercício 10
 function exercicio10(){
@@ -124,8 +131,9 @@ function exercicio10(){
             inventarioEmpresa += produto.preco * produto.qtdEstoque
         }
     }
-    console.log("Valor do ticket médio dos produtos da empresa é R$ " + (inventarioEmpresa/listaProdutos.length))
+    console.log(`A resposta do exercício 10 é: o valor do ticket médio dos produtos da empresa é R$${inventarioEmpresa / listaProdutos.length}`)
 }
+console.log(exercicio10())
 
 // Exercício 11
 function exercicio11(){
@@ -157,9 +165,8 @@ function exercicio11(){
         console.log(`O total de itens do departamento "${listaDeptos[j].nomeDepto}" é ${listaDeptos[j].somatoriaItens}`)
     }
 }
-console.log("A resposta do exercício 11 é:")
+console.log(`A resposta do exercício 11 é:`)
 console.log(exercicio11())
-// listaProdutos.map (produto => console.log(produto.departamento.nomeDepto))
 
 // Exercício 12
 function exercicio12(){
@@ -171,7 +178,6 @@ function exercicio12(){
         if (produto.departamento.idDepto != codDepto){
             // console.log(produto.departamento.nomeDepto);
             codDepto = produto.departamento.idDepto;
-
             // Encontrei os departamentos, agora definirei uma pequena estrutura para armazenar na lista, contendo o nome do dpto e inicialmente a qtd zerada
             let itemLista = {
                 nomeDepto: produto.departamento.nomeDepto,
@@ -184,8 +190,7 @@ function exercicio12(){
     // Agora percorro novamente a lista e, para cada produto, percorro os departamentos e somo o estoque
     for (let i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos [i];
-        let inventarioProduto = produto.preco * produto.qtdEstoque
-        
+        let inventarioProduto = produto.preco * produto.qtdEstoque        
         // Para cada produto na lista, eu preciso encontrar seu respectivo departamento na outra lista e somar ao seu estoque
         // Tenho que percorrer a lista de departamentos     
         for (j = 0; j < listaDeptos.length; j++){
@@ -210,9 +215,7 @@ function exercicio13(){
     for (let i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos [i];
         if (produto.departamento.idDepto != codDepto){
-
             codDepto = produto.departamento.idDepto;
-
             let itemLista = {
                 nomeDepto: produto.departamento.nomeDepto,
                 idDepto: produto.departamento.idDepto,
@@ -273,7 +276,7 @@ function exercicio14(){
             deptoMaisValioso = listaDeptos[j]
         }
     }
-    console.log(`Resposta exercício 14: o departamento mais valioso é o "${deptoMaisValioso.nomeDepto}"`)
+    console.log(`A resposta do exercício 14 é: o departamento mais valioso é o "${deptoMaisValioso.nomeDepto}"`)
 }
 console.log(exercicio14())
 
@@ -302,8 +305,6 @@ function exercicio15(){
             }
         }
     }
-    // console.log(listaDeptos)
-
     let deptoMenosValioso = listaDeptos [0];
     for(j = 1; j < listaDeptos.length; j++){
         let depto = listaDeptos[j];
@@ -311,6 +312,6 @@ function exercicio15(){
             deptoMenosValioso = depto
         }
     }
-    console.log(`Resposta exercício 15: o departamento menos valioso é o "${deptoMenosValioso.nomeDepto}"`)
+    console.log(`A resposta do exercício 15 é: o departamento menos valioso é o "${deptoMenosValioso.nomeDepto}"`)
 }
 console.log(exercicio15())
